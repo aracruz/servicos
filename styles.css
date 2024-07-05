@@ -21,6 +21,7 @@ header img {
     text-align: left;
     transition: transform 0.2s;
     height: 90%;
+    padding: 10px;
 }
 
 .card:hover {
@@ -47,11 +48,11 @@ header img {
 
 footer {
     background-color: #343a40;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 button {
-    background-color: transparent!important;
+    background-color: transparent !important;
 }
 
 .border-primary {
