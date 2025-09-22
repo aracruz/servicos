@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secretaria da Fazenda - Portal de Serviços Tributários</title>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation Menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark main-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="src/images/logo_aracruz.png" alt="Prefeitura de Aracruz" class="header-logo">
+                <div class="header-text">
+                    <h1 class="header-title">Secretaria da Fazenda</h1>
+                    <p class="header-subtitle">Portal de Serviços Tributários</p>
+                </div>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Início
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="legislacao.html">
+                            <i class="fas fa-gavel me-1"></i>Legislação
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="nfse-nacional.html">
+                            <i class="fas fa-file-invoice me-1"></i>NFS-e Nacional
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://es-aracruz-pm-nfs.cloud.el.com.br/" target="_blank">
+                            <i class="fas fa-external-link-alt me-1"></i>Sistema NFS-e
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center h-100">
+                <div class="col-lg-9">
+                    <h1 class="display-4 fw-bold mb-3">
+                        <i class="fas fa-file-invoice me-3"></i>
+                        NFS-e Padrão Nacional
+                    </h1>
+                    <p class="lead mb-4">Orientações essenciais para os contribuintes sobre a Nota Fiscal de Serviço Padrão
+                        Nacional</p>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <div
+                        style="background-color: #FFF; border-radius: 15px; padding: 10px; width: 210px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <img src="src/images/nfe_icon.png" alt="NFS-e Nacional" class="img-fluid"
+                            style="max-height: 150px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container my-5">
+        <!-- Nova Legislação -->
+        <section class="mb-5">
+            <h2 class="text-center mb-4">
+                <i class="fas fa-landmark text-primary me-2"></i>
+                Nova Legislação e Obrigações dos Municípios
+            </h2>
+            <h5 class="mb-5">
+                A adequação do Sistema de Emissão de Notas Fiscais de Serviços pelos Entes Federados é uma exigência do
+                art. 62 da <a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm" target="_blank">Lei
+                    Complementar (LC) 214, de 16 de janeiro de 2025.</a>
+            </h5>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-check-circle feature-icon text-success"></i>
+                            <h4 class="card-title">Padrão único em todo o país</h4>
+                            <p class="card-text text-justify">Com a Nota Fiscal Nacional, os contribuintes passam a usar
+                                um modelo padronizado de documento fiscal, válido em todos os Municípios. Isso elimina
+                                diferenças de sistemas locais, reduz erros e simplifica o cumprimento das obrigações.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-chart-line feature-icon text-info"></i>
+                            <h4 class="card-title">Mais simplicidade e menos burocracia</h4>
+                            <p class="card-text text-justify">O art. 62 da LC nº 214 determina que os entes públicos
+                                adaptem seus sistemas para o mesmo leiaute e compartilhem automaticamente os documentos
+                                fiscais. Para o contribuinte, isso significa menos retrabalho e mais praticidade.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-shield-alt feature-icon text-warning"></i>
+                            <h4 class="card-title">Segurança e integração de dados</h4>
+                            <p class="card-text text-justify">As notas emitidas são armazenadas em ambiente nacional,
+                                com gestão conjunta dos fiscos federal, estaduais e municipais. Isso garante maior
+                                segurança das informações e facilita o cruzamento de dados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como funciona em Aracruz -->
+        <section class="mb-5">
+            <h2 class="text-center mb-4">
+                <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                Como vai funcionar em Aracruz
+            </h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-cogs feature-icon text-primary"></i>
+                            <h4 class="card-title">Período de Transição</h4>
+                            <p class="card-text text-justify">No período inicial de transição, o Município de Aracruz
+                                optou por manter o Emissor Próprio, realizando, em conjunto com a Software House
+                                responsável, as adequações necessárias para garantir a integração ao Ambiente Nacional.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-users feature-icon text-success"></i>
+                            <h4 class="card-title">MEIs - Sem Mudanças</h4>
+                            <p class="card-text text-justify">Para os Microempreendedores Individuais (MEIs), não há
+                                mudanças: desde setembro de 2023, a emissão das Notas Fiscais de Serviços já é feita
+                                exclusivamente pelo Emissor Nacional.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-calendar-alt feature-icon text-info"></i>
+                            <h4 class="card-title">Avaliação 2026</h4>
+                            <p class="card-text text-justify">O Município pretende avaliar o período de transição em
+                                2026, especialmente no que diz respeito à adequação dos documentos fiscais para
+                                implantação do IBS e CBS.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-file-alt feature-icon text-warning"></i>
+                            <h4 class="card-title">Decreto nº 49.509/2025</h4>
+                            <p class="card-text text-justify">Dispõe sobre a parametrização de eventos relacionados ao
+                                cancelamento e à substituição de NFS-e padrão nacional.</p>
+                            <div class="mt-3">
+                                <a href="https://aracruz.es.gov.br/storage/50627/49509.pdf" target="_blank"
+                                    class="btn btn-outline-warning m-2">
+                                    <i class="fas fa-external-link-alt me-1"></i>Acessar Decreto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Providências Necessárias -->
+        <section class="mb-5">
+            <h2 class="text-center mb-4">
+                <i class="fas fa-tasks text-primary me-2"></i>
+                Providências Necessárias
+            </h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-laptop-code feature-icon text-primary"></i>
+                            <h4 class="card-title">Prepare seu software</h4>
+                            <p class="card-text text-justify">
+                                Converse com seu fornecedor de sistema o quanto antes para garantir a integração via
+                                APIs. Já estão disponíveis materiais técnicos, layouts e especificações para as equipes
+                                de TI.
+                            </p>
+                            <div class="mt-3">
+                                <a href="https://s3.us-east-1.amazonaws.com/el.com.br/nfse/GPI/Videos_Tutoriais_NFS-e.zip"
+                                    target="_blank" class="btn btn-outline-info">
+                                    <i class="fas fa-external-link-alt me-1"></i>Documentação da API
+                                </a>
+                            </div>
+
+                            <div class="alert alert-danger mt-3" role="alert">
+                                <i class="fas fa-clock me-2"></i>
+                                <strong>Prazo final:</strong> 31 de outubro de 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-book feature-icon text-info"></i>
+                            <h4 class="card-title">Conheça as novas regras</h4>
+                            <p class="card-text text-justify">Fique atento aos códigos de tributação nacional e às
+                                normas de incidência do ISSQN conforme o tipo de serviço. Entender essas regras evita
+                                erros no momento da emissão da nota.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-user-edit feature-icon text-success"></i>
+                            <h4 class="card-title">Atualize seu cadastro</h4>
+                            <p class="card-text text-justify">
+                                Os dados do seu cadastro municipal são usados para validar suas notas fiscais. Verifique
+                                se as informações estão corretas e mantenha tudo atualizado para não ter problemas.
+                            </p>
+                            <div class="mt-3">
+                                <a href="https://api.whatsapp.com/send/?phone=5527997583314&text=Ol%C3%A1,%20gostaria%20de%20atualizar%20meu%20cadastro.&type=phone_number&app_absent=0"
+                                    target="_blank" class="btn btn-outline-success">
+                                    <i class="fas fa-external-link-alt me-1"></i>Atualize seu cadastro
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cronograma de Implementação -->
+        <section class="mb-5">
+            <h2 class="text-center mb-4">
+                <i class="fas fa-timeline text-primary me-2"></i>
+                Cronograma de Implementação
+            </h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-play-circle feature-icon text-success"></i>
+                            <h4 class="card-title">Fase 1 - Atual</h4>
+                            <p class="card-text text-justify">Adequação dos sistemas municipais e integração com o
+                                Ambiente Nacional. Manutenção do Emissor Próprio durante a transição.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-tools feature-icon text-warning"></i>
+                            <h4 class="card-title">Fase 2 - 2025</h4>
+                            <p class="card-text text-justify">Prazo final para adequação de todos os sistemas (31 de
+                                outubro de 2025). Testes e validações finais.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-rocket feature-icon text-info"></i>
+                            <h4 class="card-title">Fase 3 - 2026</h4>
+                            <p class="card-text text-justify">Avaliação do período de transição e preparação para
+                                adequação aos novos impostos IBS e CBS.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-flag-checkered feature-icon text-primary"></i>
+                            <h4 class="card-title">Fase 4 - Futuro</h4>
+                            <p class="card-text text-justify">Implementação completa do sistema nacional e adequação
+                                total à Reforma Tributária.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+        <div class="container">
+            <div class="actions-card">
+                <h4><i class="fas fa-bolt me-2"></i>Ações Rápidas</h4>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <a href="https://es-aracruz-pm-nfs.cloud.el.com.br/" class="action-btn" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Acessar Sistema NFS-e</span>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="legislacao.html" class="action-btn">
+                            <i class="fas fa-gavel"></i>
+                            <span>Ver Legislação</span>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="https://aracruz.es.gov.br/storage/50627/49509.pdf" class="action-btn" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Decreto 49.509/2025</span>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="index.html" class="action-btn">
+                            <i class="fas fa-home"></i>
+                            <span>Voltar ao Início</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; <span id="currentYear"></span> Secretaria da Fazenda | Prefeitura Municipal de Aracruz - Todos os direitos
+                        reservados.</p>
+                </div>
+                <div class="footer-right">
+                    <span>NFS-e Padrão Nacional • Lei Complementar nº 214/2025</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button id="backToTop" class="back-to-top-btn" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Atualizar ano automaticamente
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Back to Top Button
+        window.addEventListener('scroll', function () {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+    <script src="https://unpkg.com/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
