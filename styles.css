@@ -890,6 +890,28 @@ body {
   opacity: 0.9;
 }
 
+
+
+.ribbon-novo {
+    position: absolute;
+    top: 12px;
+    right: -35px;
+    width: 120px;
+    padding: 8px 0;
+    background-color: #dc3545;
+    color: white;
+    text-align: center;
+    transform: rotate(45deg);
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+
+
+
+
 /* =====================================
    🎭 ANIMATIONS
    ===================================== */
