@@ -217,9 +217,50 @@
 
                 <div class="col-md-3">
                     <div class="card feature-card h-100">
-                        <!-- Tarja "novo" -->
                         <div class="ribbon-novo-verde">NOVO !!</div>
 
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-file-signature feature-icon text-primary"></i>
+                            <h4 class="card-title">Portaria nº 018/2026 <br> SEMFA</h4>
+                            <p class="card-text text-justify">
+                                Dispõe sobre o regime especial de emissão de documento fiscal pelos prestadores
+                                de serviços sediados fora do município de Aracruz/ES e que prestem serviços
+                                neste município.
+                            </p>
+                            <div class="mt-3">
+                                <a href="storage/portaria_SEFA_018_2026.pdf" target="_blank"
+                                    class="btn btn-outline-primary m-2">
+                                    <i class="fas fa-external-link-alt me-1"></i>Acessar Portaria
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card feature-card h-100">
+                        <div class="ribbon-novo-verde">NOVO !!</div>
+
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-file-alt feature-icon text-warning"></i>
+                            <h4 class="card-title">Portaria nº 019/2026 <br> SEMFA</h4>
+                            <p class="card-text text-justify">
+                                Dispõe sobre o regime especial de emissão de documento fiscal pelos prestadores
+                                de serviços sediados fora do município de Aracruz/ES para tomadores com benefício
+                                fiscal da Lei Municipal nº 4.220/2019.
+                            </p>
+                            <div class="mt-3">
+                                <a href="storage/portaria_SEFA_019_2026.pdf" target="_blank"
+                                    class="btn btn-outline-warning m-2">
+                                    <i class="fas fa-external-link-alt me-1"></i>Acessar Portaria
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card feature-card h-100">
                         <div class="card-body text-center p-4">
                             <i class="fa-solid fa-bell feature-icon text-primary"></i>
                             <h4 class="card-title">Comunicado Conjunto CGIBS/RFB 01/2025</h4>
@@ -237,9 +278,6 @@
 
                 <div class="col-md-3">
                     <div class="card feature-card h-100">
-                        <!-- Tarja "novo" -->
-                        <div class="ribbon-novo-verde">NOVO !!</div>
-
                         <div class="card-body text-center p-4">
                             <i class="fas fa-file-alt feature-icon text-warning"></i>
                             <h4 class="card-title">Nota Técnica Nº 004 <br> Versão 2.0</h4>
@@ -426,6 +464,26 @@
         </div>
     </footer>
 
+    <!-- Novidades Popup -->
+    <div id="novidadesPopup" class="novidades-overlay" role="dialog" aria-modal="true"
+        aria-labelledby="novidadesTitle" aria-describedby="novidadesDesc" hidden>
+        <div class="novidades-modal">
+            <button type="button" class="novidades-close" id="novidadesClose" aria-label="Fechar aviso de novidades">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="novidades-header">
+                <span class="novidades-badge"><i class="fas fa-bell me-1"></i>NOVO</span>
+                <h3 id="novidadesTitle">Atenção: Novidades</h3>
+            </div>
+            <p id="novidadesDesc">Encontramos novidades marcadas nesta pagina:</p>
+            <ul id="novidadesList" class="novidades-list"></ul>
+            <div class="novidades-actions">
+                <button type="button" class="btn btn-primary" id="novidadesVer">Ver novidades</button>
+                <button type="button" class="btn btn-outline-primary" id="novidadesFechar">Fechar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating Back to Top Button -->
     <button id="backToTop" class="back-to-top-btn" onclick="scrollToTop()">
         <i class="fas fa-arrow-up"></i>
@@ -451,6 +509,134 @@
                 behavior: 'smooth'
             });
         }
+
+        (function () {
+            const ribbons = Array.from(document.querySelectorAll('.ribbon-novo-verde, .ribbon-novo'));
+            if (!ribbons.length) {
+                return;
+            }
+
+            const popup = document.getElementById('novidadesPopup');
+            const list = document.getElementById('novidadesList');
+            const btnClose = document.getElementById('novidadesClose');
+            const btnFechar = document.getElementById('novidadesFechar');
+            const btnVer = document.getElementById('novidadesVer');
+
+            if (!popup || !list) {
+                return;
+            }
+
+            const novidades = [];
+            ribbons.forEach((ribbon) => {
+                const card = ribbon.closest('.card');
+                const title = card ? card.querySelector('.card-title') : null;
+                const label = title ? title.textContent.trim() : 'Atualizacao';
+                if (label && !novidades.includes(label)) {
+                    novidades.push(label);
+                }
+            });
+
+            if (!novidades.length) {
+                return;
+            }
+
+            let shouldShow = true;
+            const storageKey = 'nfse-nacional-novidades';
+            try {
+                const current = novidades.join('|');
+                const lastSeen = localStorage.getItem(storageKey);
+                if (lastSeen === current) {
+                    shouldShow = false;
+                } else {
+                    localStorage.setItem(storageKey, current);
+                }
+            } catch (error) {
+                shouldShow = true;
+            }
+
+            novidades.forEach((item) => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                list.appendChild(li);
+            });
+
+            const openPopup = () => {
+                popup.hidden = false;
+                document.body.classList.add('novidades-open');
+                if (btnClose) {
+                    btnClose.focus();
+                }
+            };
+
+            const closePopup = () => {
+                popup.hidden = true;
+                document.body.classList.remove('novidades-open');
+            };
+
+            if (btnClose) {
+                btnClose.addEventListener('click', closePopup);
+            }
+            if (btnFechar) {
+                btnFechar.addEventListener('click', closePopup);
+            }
+            if (btnVer) {
+                btnVer.addEventListener('click', () => {
+                    const firstRibbon = ribbons[0];
+                    const firstCard = firstRibbon ? firstRibbon.closest('.card') : null;
+                    if (firstCard) {
+                        firstCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    closePopup();
+                });
+            }
+
+            popup.addEventListener('click', (event) => {
+                if (event.target === popup) {
+                    closePopup();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !popup.hidden) {
+                    closePopup();
+                }
+            });
+
+            if (shouldShow) {
+                openPopup();
+            }
+        })();
+
+        (function () {
+            if (window.parent === window) {
+                return;
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            const novidadesId = params.get('novidadesId') || 'nfse-nacional';
+            const novidadesName = params.get('novidadesName') || document.title || 'Pagina';
+
+            const ribbons = Array.from(document.querySelectorAll('.ribbon-novo-verde, .ribbon-novo'));
+            const novidades = [];
+            ribbons.forEach((ribbon) => {
+                const card = ribbon.closest('.card');
+                const title = card ? card.querySelector('.card-title') : null;
+                const text = title ? title.textContent.trim() : 'Atualizacao';
+                if (text && !novidades.includes(text)) {
+                    novidades.push(text);
+                }
+            });
+
+            try {
+                window.parent.postMessage({
+                    type: 'novidades',
+                    id: novidadesId,
+                    name: novidadesName,
+                    novidades
+                }, '*');
+            } catch (error) {
+            }
+        })();
     </script>
 
     <script src="https://unpkg.com/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -266,6 +266,26 @@
         </div>
     </footer>
 
+    <!-- Novidades Popup -->
+    <div id="novidadesPopupIndex" class="novidades-overlay" role="dialog" aria-modal="true"
+        aria-labelledby="novidadesTitleIndex" aria-describedby="novidadesDescIndex" hidden>
+        <div class="novidades-modal">
+            <button type="button" class="novidades-close" id="novidadesCloseIndex" aria-label="Fechar aviso de novidades">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="novidades-header">
+                <span class="novidades-badge"><i class="fas fa-bell me-1"></i>NOVO</span>
+                <h3 id="novidadesTitleIndex">Atenção: Novidades</h3>
+            </div>
+            <p id="novidadesDescIndex">Encontramos novidades nas paginas monitoradas:</p>
+            <ul id="novidadesListIndex" class="novidades-list"></ul>
+            <div class="novidades-actions">
+                <button type="button" class="btn btn-primary" id="novidadesVerIndex">Ver novidades</button>
+                <button type="button" class="btn btn-outline-primary" id="novidadesFecharIndex">Fechar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating Back to Top Button -->
     <button id="backToTop" class="back-to-top-btn" onclick="scrollToTop()">
         <i class="fas fa-arrow-up"></i>
@@ -316,6 +336,253 @@
                 behavior: 'smooth'
             });
         }
+
+        (function () {
+            // Configure as paginas monitoradas aqui.
+            const MONITORED_PAGES = [
+                { id: 'nfse-nacional', name: 'NFS-e Nacional', url: 'nfse-nacional.html' }
+            ];
+            const CHECK_INTERVAL_MIN = 5;
+
+            const popup = document.getElementById('novidadesPopupIndex');
+            const list = document.getElementById('novidadesListIndex');
+            const btnClose = document.getElementById('novidadesCloseIndex');
+            const btnFechar = document.getElementById('novidadesFecharIndex');
+            const btnVer = document.getElementById('novidadesVerIndex');
+
+            if (!popup || !list || !MONITORED_PAGES.length) {
+                return;
+            }
+
+            const pages = MONITORED_PAGES.map((page, index) => normalizePage(page, index));
+            const frames = new Map();
+            const results = new Map();
+            let lastSignature = '';
+            let manuallyClosed = false;
+            let latestResults = [];
+            let pending = new Set();
+            let pendingTimeout = null;
+
+            function normalizePage(page, index) {
+                const safe = page || {};
+                return {
+                    id: String(safe.id || `page-${index + 1}`),
+                    name: String(safe.name || safe.url || 'Pagina'),
+                    url: String(safe.url || '')
+                };
+            }
+
+            function appendParams(url, params) {
+                const parts = url.split('#');
+                const base = parts[0];
+                const hash = parts[1] ? `#${parts[1]}` : '';
+                const separator = base.includes('?') ? '&' : '?';
+                const query = new URLSearchParams(params).toString();
+                return `${base}${separator}${query}${hash}`;
+            }
+
+            function buildFrameSrc(page) {
+                return appendParams(page.url, {
+                    novidadesId: page.id,
+                    novidadesName: page.name,
+                    t: Date.now()
+                });
+            }
+
+            function createFrames() {
+                const container = document.createElement('div');
+                container.className = 'novidades-frames';
+                container.setAttribute('aria-hidden', 'true');
+                document.body.appendChild(container);
+
+                pages.forEach((page) => {
+                    if (!page.url) {
+                        return;
+                    }
+                    const frame = document.createElement('iframe');
+                    frame.className = 'novidades-frame';
+                    frame.setAttribute('title', `Monitor ${page.name}`);
+                    frame.setAttribute('tabindex', '-1');
+                    container.appendChild(frame);
+                    frames.set(page.id, frame);
+                });
+            }
+
+            function refreshFrames() {
+                pending = new Set(pages.map((page) => page.id));
+                pages.forEach((page) => {
+                    const frame = frames.get(page.id);
+                    if (frame && page.url) {
+                        frame.src = buildFrameSrc(page);
+                    }
+                });
+
+                if (pendingTimeout) {
+                    clearTimeout(pendingTimeout);
+                }
+
+                pendingTimeout = setTimeout(() => {
+                    if (pending.size > 0) {
+                        pending.clear();
+                        updatePopup();
+                    }
+                }, 3000);
+            }
+
+            function buildSignature(resultsList) {
+                const parts = [];
+                resultsList.forEach((result) => {
+                    result.novidades.forEach((item) => {
+                        parts.push(`${result.name}:${item}`);
+                    });
+                });
+                return parts.join('|');
+            }
+
+            function renderResults(resultsList) {
+                list.innerHTML = '';
+                let hasNovidades = false;
+
+                resultsList.forEach((result) => {
+                    if (!result.novidades.length) {
+                        return;
+                    }
+                    hasNovidades = true;
+                    result.novidades.forEach((item) => {
+                        const li = document.createElement('li');
+                        const strong = document.createElement('strong');
+                        strong.textContent = `${result.name}: `;
+                        li.appendChild(strong);
+
+                        const text = document.createElement('span');
+                        text.textContent = item;
+                        li.appendChild(text);
+
+                        const link = document.createElement('a');
+                        link.href = result.url;
+                        link.className = 'novidades-link';
+                        link.textContent = 'Abrir pagina';
+                        li.appendChild(document.createTextNode(' '));
+                        li.appendChild(link);
+
+                        list.appendChild(li);
+                    });
+                });
+
+                return hasNovidades;
+            }
+
+            function openPopup() {
+                popup.hidden = false;
+                document.body.classList.add('novidades-open');
+                if (btnClose) {
+                    btnClose.focus();
+                }
+            }
+
+            function closePopup() {
+                popup.hidden = true;
+                document.body.classList.remove('novidades-open');
+                manuallyClosed = true;
+            }
+
+            function getFirstNovidadeUrl(resultsList) {
+                for (const result of resultsList) {
+                    if (result.novidades.length) {
+                        return result.url;
+                    }
+                }
+                return '';
+            }
+
+            function getResultsArray() {
+                return pages.map((page) => results.get(page.id) || { ...page, novidades: [] });
+            }
+
+            function updatePopup() {
+                latestResults = getResultsArray();
+                const hasNovidades = renderResults(latestResults);
+
+                if (!hasNovidades) {
+                    popup.hidden = true;
+                    document.body.classList.remove('novidades-open');
+                    lastSignature = '';
+                    manuallyClosed = false;
+                    return;
+                }
+
+                const signature = buildSignature(latestResults);
+                if (signature !== lastSignature) {
+                    manuallyClosed = false;
+                }
+                lastSignature = signature;
+
+                if (!manuallyClosed) {
+                    openPopup();
+                }
+            }
+
+            function handleMessage(event) {
+                const data = event.data;
+                if (!data || data.type !== 'novidades') {
+                    return;
+                }
+                const page = pages.find((entry) => entry.id === data.id);
+                if (!page) {
+                    return;
+                }
+                const frame = frames.get(page.id);
+                if (frame && frame.contentWindow !== event.source) {
+                    return;
+                }
+                const novidades = Array.isArray(data.novidades) ? data.novidades : [];
+                results.set(page.id, { ...page, novidades });
+                pending.delete(page.id);
+                if (pending.size === 0) {
+                    if (pendingTimeout) {
+                        clearTimeout(pendingTimeout);
+                    }
+                    updatePopup();
+                }
+            }
+
+            if (btnClose) {
+                btnClose.addEventListener('click', closePopup);
+            }
+            if (btnFechar) {
+                btnFechar.addEventListener('click', closePopup);
+            }
+            if (btnVer) {
+                btnVer.addEventListener('click', () => {
+                    const url = getFirstNovidadeUrl(latestResults);
+                    if (url) {
+                        window.location.href = url;
+                    }
+                    closePopup();
+                });
+            }
+
+            popup.addEventListener('click', (event) => {
+                if (event.target === popup) {
+                    closePopup();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !popup.hidden) {
+                    closePopup();
+                }
+            });
+
+            window.addEventListener('message', handleMessage);
+
+            createFrames();
+            refreshFrames();
+
+            if (CHECK_INTERVAL_MIN > 0) {
+                setInterval(refreshFrames, CHECK_INTERVAL_MIN * 60 * 1000);
+            }
+        })();
     </script>
     
     <script src="https://unpkg.com/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
