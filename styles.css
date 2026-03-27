@@ -527,6 +527,20 @@ body {
   background: var(--color-bg-primary);
 }
 
+.feature-card .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.feature-card .card-text {
+  flex-grow: 1;
+}
+
+.feature-card .card-body > .mt-3 {
+  margin-top: auto !important;
+}
+
 .feature-card:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-lg);
