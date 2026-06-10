@@ -1416,9 +1416,71 @@ body.novidades-open {
   margin-bottom: var(--spacing-sm);
 }
 
+.dte-alert--featured {
+  padding: var(--spacing-xl);
+}
+
+.dte-alert--featured strong {
+  color: var(--color-danger);
+  font-size: var(--font-size-3xl);
+  line-height: 1.15;
+}
+
 .dte-alert p {
   margin: 0;
   color: var(--color-text-secondary);
+}
+
+.dte-legal-reference {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-left: 5px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.dte-legal-reference h3 {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.dte-legal-text {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.dte-legal-text p {
+  margin-bottom: var(--spacing-md);
+  overflow-wrap: anywhere;
+}
+
+.dte-legal-text p:last-child {
+  margin-bottom: 0;
+}
+
+.dte-legal-caput {
+  font-weight: 600;
+}
+
+.dte-legal-item {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.dte-legal-item span {
+  color: var(--color-primary-dark);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.dte-legal-item p {
+  margin-bottom: 0;
 }
 
 .dte-steps {
@@ -1809,6 +1871,22 @@ body.novidades-open {
     padding: var(--spacing-lg);
   }
 
+  .dte-alert--featured {
+    padding: var(--spacing-lg);
+  }
+
+  .dte-alert--featured strong {
+    font-size: var(--font-size-2xl);
+  }
+
+  .dte-legal-reference {
+    padding: var(--spacing-md);
+  }
+
+  .dte-legal-reference h3 {
+    font-size: var(--font-size-lg);
+  }
+
   .dte-modal {
     padding: var(--spacing-lg);
   }
@@ -1980,6 +2058,20 @@ body.novidades-open {
   .reforma-date-block--info strong,
   .cib-meeting-date strong {
     font-size: var(--font-size-xl);
+  }
+
+  .dte-alert--featured strong {
+    font-size: var(--font-size-xl);
+  }
+
+  .dte-legal-text {
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+  }
+
+  .dte-legal-item {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
   }
 
   .back-to-top-btn {
