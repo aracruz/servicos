@@ -86,6 +86,7 @@ body {
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* =====================================
@@ -149,6 +150,7 @@ body {
   border-radius: var(--radius-md);
   transition: all var(--transition-normal);
   margin: 0 var(--spacing-xs);
+  white-space: nowrap;
 }
 
 .navbar-nav .nav-link:hover {
@@ -659,6 +661,169 @@ body {
   background: var(--color-info);
 }
 
+/* Reforma Tributária */
+.hero-symbol {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-xl);
+  color: var(--color-text-white);
+  display: inline-flex;
+  font-size: 4rem;
+  height: 150px;
+  justify-content: center;
+  width: 150px;
+  box-shadow: var(--shadow-md);
+}
+
+.reforma-tributaria-section {
+  scroll-margin-top: 120px;
+}
+
+.reforma-tributaria-section,
+.reforma-card,
+.reforma-card .card-body {
+  min-width: 0;
+}
+
+.reforma-section-header {
+  display: grid;
+  gap: var(--spacing-sm);
+  justify-items: center;
+}
+
+.reforma-section-header .section-title {
+  margin-bottom: 0;
+}
+
+.reforma-card {
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-primary);
+}
+
+.reforma-card--dte {
+  border-top-color: var(--color-danger);
+}
+
+.reforma-card--cib {
+  border-top-color: var(--color-info);
+}
+
+.reforma-card .card-body {
+  gap: var(--spacing-sm);
+}
+
+.reforma-card .feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.reforma-card .card-title {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-xs);
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.reforma-card .card-text {
+  color: var(--color-text-secondary);
+  flex-grow: 0;
+  margin-bottom: var(--spacing-sm);
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.reforma-card-meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.reforma-card-type {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.reforma-date-block {
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-sm) 0;
+  padding: var(--spacing-md);
+}
+
+.reforma-date-block span,
+.cib-meeting-date span {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+}
+
+.reforma-date-block strong,
+.cib-meeting-date strong {
+  display: block;
+  line-height: 1.15;
+}
+
+.reforma-date-block--danger {
+  background: #fff5f5;
+  border: 1px solid rgba(220, 53, 69, 0.25);
+  color: var(--color-danger);
+}
+
+.reforma-date-block--danger strong {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-3xl);
+}
+
+.reforma-date-block--info {
+  background: #e8f7fb;
+  border: 1px solid rgba(23, 162, 184, 0.28);
+  color: var(--color-info);
+}
+
+.reforma-date-block--info strong {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xl);
+}
+
+.reforma-warning {
+  background: rgba(220, 53, 69, 0.08);
+  border-left: 4px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-weight: 700;
+  margin: var(--spacing-sm) 0 var(--spacing-md);
+  overflow-wrap: anywhere;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.reforma-warning--info {
+  background: rgba(23, 162, 184, 0.08);
+  border-left-color: var(--color-info);
+}
+
+.reforma-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+  padding-top: var(--spacing-sm);
+}
+
+.reforma-actions .btn {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 44px;
+  white-space: normal;
+}
+
 /* =====================================
    📊 LEGISLATION INTEGRATED SECTION
    ===================================== */
@@ -1076,6 +1241,7 @@ body {
   align-items: center;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
+  padding-right: 44px;
 }
 
 .novidades-badge {
@@ -1111,6 +1277,7 @@ body {
   margin-bottom: var(--spacing-xs);
   font-weight: 600;
   color: var(--color-text-primary);
+  line-height: 1.5;
 }
 
 .novidades-link {
@@ -1180,6 +1347,14 @@ body.novidades-open {
 .dte-badge {
   background: var(--color-danger);
   color: var(--color-text-white);
+}
+
+.cib-service-card {
+  border-top: 4px solid var(--color-info);
+}
+
+.cib-service-card .card-icon i {
+  color: var(--color-info);
 }
 
 .dte-card {
@@ -1282,6 +1457,179 @@ body.novidades-open {
 .dte-modal-alert {
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-lg);
+}
+
+/* CIB/SINTER */
+.cib-card {
+  border-top: 4px solid var(--color-info);
+}
+
+.cib-card .card-title {
+  color: var(--color-primary-dark);
+}
+
+.cib-new-tag {
+  background-color: var(--color-info);
+}
+
+.cib-highlight {
+  background: rgba(23, 162, 184, 0.1);
+  border: 1px solid rgba(23, 162, 184, 0.25);
+  border-radius: var(--radius-md);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+}
+
+.cib-info-section {
+  scroll-margin-top: 120px;
+}
+
+.cib-info-box {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-xl);
+}
+
+.cib-subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.cib-institutional-call {
+  background: var(--color-bg-secondary);
+  border-left: 5px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-lg);
+}
+
+.cib-institutional-call h3,
+.cib-detail-card h3 {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.cib-institutional-call p {
+  margin: 0;
+}
+
+.cib-meeting-alert {
+  background: #e8f7fb;
+  border: 1px solid rgba(23, 162, 184, 0.35);
+  border-left: 5px solid var(--color-info);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.cib-alert-label {
+  display: inline-flex;
+  color: var(--color-info);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+}
+
+.cib-meeting-alert strong {
+  display: block;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.cib-meeting-date {
+  background: var(--color-bg-primary);
+  border: 1px solid rgba(23, 162, 184, 0.25);
+  border-radius: var(--radius-md);
+  color: var(--color-info);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.cib-meeting-date strong {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xl);
+  margin-bottom: 0;
+}
+
+.cib-modal-date {
+  display: block;
+  font-weight: 800;
+  margin-top: var(--spacing-xs);
+}
+
+.cib-detail-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.cib-detail-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.cib-detail-card li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.cib-audience-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.cib-audience-list span {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-primary);
+  display: inline-flex;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  padding: 7px 12px;
+}
+
+.cib-modal {
+  max-width: 680px;
+}
+
+.cib-modal-badge {
+  background: var(--color-info);
+}
+
+.cib-modal-alert {
+  color: var(--color-text-primary);
+}
+
+.news-item-new {
+  align-items: center;
+  background: var(--color-success);
+  border-radius: var(--radius-full);
+  color: var(--color-text-white);
+  display: inline-flex;
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  line-height: 1;
+  margin-right: var(--spacing-sm);
+  padding: 4px 8px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.portal-card-spaced .card-text {
+  margin-bottom: var(--spacing-sm);
+}
+
+.mobile-friendly-actions .btn {
+  min-height: 42px;
 }
 
 
@@ -1430,6 +1778,27 @@ body.novidades-open {
     font-size: var(--font-size-base);
   }
 
+  .reforma-section-header {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .reforma-card .card-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .reforma-date-block--danger strong {
+    font-size: var(--font-size-2xl);
+  }
+
+  .reforma-actions {
+    flex-direction: column;
+  }
+
+  .reforma-actions .btn {
+    width: 100%;
+  }
+
   .notification-meta {
     flex-direction: column;
     align-items: flex-start;
@@ -1453,6 +1822,36 @@ body.novidades-open {
     width: 100%;
   }
 
+  .cib-info-box {
+    padding: var(--spacing-lg);
+  }
+
+  .cib-institutional-call,
+  .cib-meeting-alert,
+  .cib-detail-card {
+    padding: var(--spacing-md);
+  }
+
+  .cib-audience-list {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .cib-audience-list span {
+    border-radius: var(--radius-md);
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cib-modal .novidades-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cib-modal .novidades-actions .btn {
+    width: 100%;
+  }
+
   .back-to-top-btn {
     bottom: 20px;
     right: 20px;
@@ -1467,10 +1866,20 @@ body.novidades-open {
     padding: var(--spacing-sm) 0;
   }
 
+  .main-nav .container {
+    gap: var(--spacing-sm);
+  }
+
   .navbar-brand {
-    flex-direction: column;
+    flex-direction: row;
     gap: var(--spacing-xs);
-    text-align: center;
+    max-width: calc(100% - 58px);
+    min-width: 0;
+    text-align: left;
+  }
+
+  .header-text {
+    min-width: 0;
   }
 
   .header-logo {
@@ -1480,10 +1889,12 @@ body.novidades-open {
 
   .header-title {
     font-size: var(--font-size-lg);
+    overflow-wrap: anywhere;
   }
   
   .header-subtitle {
     font-size: 0.7rem;
+    overflow-wrap: anywhere;
   }
 
   .navbar-nav .nav-link {
@@ -1511,6 +1922,18 @@ body.novidades-open {
   .hero-title {
     font-size: var(--font-size-2xl);
   }
+
+  .hero-section .display-4 {
+    font-size: var(--font-size-3xl);
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-section .lead {
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
   
   /* Cards em 1 coluna em telas muito pequenas */
   .col-lg-2 {
@@ -1525,6 +1948,38 @@ body.novidades-open {
   
   .suggestions-box {
     max-height: 150px;
+  }
+
+  main.container {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+
+  .notification-section {
+    padding: var(--spacing-md);
+  }
+
+  .notification-intro {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .reforma-tributaria-section .row {
+    --bs-gutter-x: 0;
+  }
+
+  .reforma-card .card-body {
+    padding: var(--spacing-lg) !important;
+  }
+
+  .reforma-date-block {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .reforma-date-block--danger strong,
+  .reforma-date-block--info strong,
+  .cib-meeting-date strong {
+    font-size: var(--font-size-xl);
   }
 
   .back-to-top-btn {
@@ -1542,6 +1997,16 @@ body.novidades-open {
   .novidades-actions {
     width: 100%;
     justify-content: stretch;
+  }
+
+  .dte-modal .novidades-header {
+    align-items: flex-start;
+    display: block;
+    padding-right: 48px;
+  }
+
+  .dte-modal .novidades-header .novidades-badge {
+    margin-bottom: var(--spacing-sm);
   }
 
   .novidades-actions .btn {
