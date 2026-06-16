@@ -89,6 +89,14 @@ body {
   overflow-x: hidden;
 }
 
+.hidden {
+  display: none;
+}
+
+.hidden-invisible {
+  visibility: hidden;
+}
+
 /* =====================================
    🧭 NAVIGATION MENU INTEGRADO
    ===================================== */
