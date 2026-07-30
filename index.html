@@ -304,7 +304,7 @@
     <!-- Novidades Popup -->
     <div id="novidadesPopupIndex" class="novidades-overlay" role="dialog" aria-modal="true"
         aria-labelledby="novidadesTitleIndex" aria-describedby="novidadesDescIndex" hidden>
-        <div class="novidades-modal">
+        <div class="novidades-modal index-news-modal">
             <button type="button" class="novidades-close" id="novidadesCloseIndex" aria-label="Fechar aviso de novidades">
                 <i class="fas fa-times"></i>
             </button>
@@ -312,9 +312,48 @@
                 <span class="novidades-badge"><i class="fas fa-bell me-1"></i>NOVO</span>
                 <h3 id="novidadesTitleIndex">Atenção: Novidades</h3>
             </div>
-            <p id="novidadesDescIndex">Encontramos novidades nas paginas monitoradas:</p>
+            <p id="novidadesDescIndex">Confira o comunicado em destaque e as demais novidades monitoradas:</p>
+            <article id="taxpayerNoticeHome" class="index-featured-notice" hidden>
+                <div class="index-featured-notice-meta">
+                    <span class="notification-badge notification-badge--important">
+                        <i class="fas fa-bullhorn me-1"></i>Comunicado oficial
+                    </span>
+                    <span><i class="far fa-calendar-alt me-1"></i>27 de julho de 2026</span>
+                </div>
+                <h4>NFS-e: obrigatoriedade dos campos de IBS e CBS a partir de 3 de agosto de 2026</h4>
+                <div class="taxpayer-notice-modal-deadlines">
+                    <div>
+                        <span>Regime regular</span>
+                        <strong>3 de agosto de 2026</strong>
+                    </div>
+                    <div>
+                        <span>Simples Nacional</span>
+                        <strong>1º de setembro de 2026</strong>
+                    </div>
+                </div>
+                <div class="alert alert-warning taxpayer-notice-modal-alert" role="alert">
+                    <i class="fas fa-triangle-exclamation me-2"></i>
+                    Documentos sem as informações obrigatórias serão rejeitados pelo Ambiente de Dados Nacional.
+                </div>
+                <section class="index-featured-notice-fulltext" aria-labelledby="indexNoticeFulltextTitle">
+                    <h5 id="indexNoticeFulltextTitle">
+                        <i class="fas fa-file-lines me-2"></i>Comunicado completo
+                    </h5>
+                    <div data-index-taxpayer-notice-copy></div>
+                </section>
+                <div class="index-featured-notice-links">
+                    <a href="reforma-tributaria.html#comunicado-contribuintes" class="btn btn-primary">
+                        <i class="fas fa-newspaper me-1"></i>Ver na Reforma Tributária
+                    </a>
+                    <a href="storage/Comunicado_aos_Contribuintes_NFSe_IBS_CBS_2026.pdf"
+                        class="btn btn-outline-primary" target="_blank">
+                        <i class="fas fa-file-pdf me-1"></i>Abrir PDF oficial
+                    </a>
+                </div>
+            </article>
+            <h4 class="index-news-list-title">Outras novidades</h4>
             <ul id="novidadesListIndex" class="novidades-list"></ul>
-            <div class="novidades-actions">
+            <div class="novidades-actions index-news-actions">
                 <button type="button" class="btn btn-primary" id="novidadesVerIndex">Ver novidades</button>
                 <button type="button" class="btn btn-outline-primary" id="novidadesFecharIndex">Fechar</button>
             </div>
@@ -375,7 +414,7 @@
         (function () {
             // Configure as paginas monitoradas aqui.
             const MONITORED_PAGES = [
-                { id: 'reforma-tributaria', name: 'Reforma Tributária', url: 'reforma-tributaria.html#reforma-destaques' },
+                { id: 'reforma-tributaria', name: 'Reforma Tributária', url: 'reforma-tributaria.html#comunicado-contribuintes' },
                 { id: 'nfse-nacional', name: 'NFS-e Nacional', url: 'nfse-nacional.html' }
             ];
             const CHECK_INTERVAL_MIN = 5;
@@ -385,6 +424,10 @@
             const btnClose = document.getElementById('novidadesCloseIndex');
             const btnFechar = document.getElementById('novidadesFecharIndex');
             const btnVer = document.getElementById('novidadesVerIndex');
+            const featuredNotice = document.getElementById('taxpayerNoticeHome');
+            const featuredNoticeCopy = featuredNotice
+                ? featuredNotice.querySelector('[data-index-taxpayer-notice-copy]')
+                : null;
 
             if (!popup || !list || !MONITORED_PAGES.length) {
                 return;
@@ -478,6 +521,7 @@
             function renderResults(resultsList) {
                 list.innerHTML = '';
                 let hasNovidades = false;
+                const hasFeaturedNotice = populateFeaturedNotice();
 
                 resultsList.forEach((result) => {
                     if (!result.novidades.length) {
@@ -485,6 +529,11 @@
                     }
                     hasNovidades = true;
                     result.novidades.forEach((item) => {
+                        const isFeaturedNotice = result.id === 'reforma-tributaria'
+                            && item.startsWith('NFS-e: campos de IBS e CBS obrigatórios');
+                        if (hasFeaturedNotice && isFeaturedNotice) {
+                            return;
+                        }
                         const li = document.createElement('li');
                         const tag = document.createElement('span');
                         tag.className = 'news-item-new';
@@ -511,6 +560,34 @@
                 });
 
                 return hasNovidades;
+            }
+
+            function populateFeaturedNotice() {
+                if (!featuredNotice || !featuredNoticeCopy) {
+                    return false;
+                }
+                if (featuredNoticeCopy.children.length) {
+                    featuredNotice.hidden = false;
+                    return true;
+                }
+
+                const reformaFrame = frames.get('reforma-tributaria');
+                try {
+                    const sourceDocument = reformaFrame ? reformaFrame.contentDocument : null;
+                    const sourceCopy = sourceDocument
+                        ? sourceDocument.querySelector('#comunicado-contribuintes .taxpayer-notice-copy')
+                        : null;
+                    if (!sourceCopy) {
+                        return false;
+                    }
+                    const copy = sourceCopy.cloneNode(true);
+                    copy.classList.add('index-featured-notice-copy');
+                    featuredNoticeCopy.appendChild(copy);
+                    featuredNotice.hidden = false;
+                    return true;
+                } catch (error) {
+                    return false;
+                }
             }
 
             function openPopup() {
