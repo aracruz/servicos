@@ -669,6 +669,390 @@ body {
   background: var(--color-info);
 }
 
+/* Comunicado aos Contribuintes */
+.taxpayer-notice-section {
+  scroll-margin-top: 120px;
+}
+
+.taxpayer-notice-card {
+  border-top: 5px solid var(--color-primary);
+}
+
+.taxpayer-notice-card:hover {
+  transform: none;
+}
+
+.taxpayer-notice-heading {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: space-between;
+  padding-right: 52px;
+}
+
+.taxpayer-notice-category {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.taxpayer-notice-subject {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.taxpayer-notice-date {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.taxpayer-notice-kicker {
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin: var(--spacing-lg) 0 var(--spacing-xs);
+  text-transform: uppercase;
+}
+
+.taxpayer-notice-title {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-3xl);
+  line-height: 1.25;
+  margin: 0 0 var(--spacing-md);
+}
+
+.taxpayer-notice-lead {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  line-height: 1.65;
+  margin-bottom: var(--spacing-lg);
+  max-width: 980px;
+}
+
+.taxpayer-notice-deadlines {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: var(--spacing-lg);
+}
+
+.taxpayer-notice-deadline {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-left: 5px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.taxpayer-notice-deadline--info {
+  border-left-color: var(--color-info);
+}
+
+.taxpayer-notice-deadline span {
+  color: var(--color-text-secondary);
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+}
+
+.taxpayer-notice-deadline strong {
+  color: var(--color-text-primary);
+  display: block;
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-xs);
+}
+
+.taxpayer-notice-deadline p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.taxpayer-notice-alert {
+  border-left: 5px solid var(--color-warning);
+  margin-bottom: var(--spacing-lg);
+}
+
+.taxpayer-notice-guidance {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.taxpayer-notice-guidance h3,
+.taxpayer-notice-copy h3 {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.taxpayer-notice-guidance ul,
+.taxpayer-notice-copy ul {
+  margin: 0;
+  padding-left: 1.3rem;
+}
+
+.taxpayer-notice-guidance li,
+.taxpayer-notice-copy li {
+  line-height: 1.65;
+  margin-bottom: var(--spacing-sm);
+}
+
+.taxpayer-notice-details {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  margin-top: var(--spacing-lg);
+  overflow: hidden;
+}
+
+.taxpayer-notice-details summary {
+  align-items: center;
+  background: var(--color-bg-primary);
+  color: var(--color-primary);
+  cursor: pointer;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  list-style: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  transition: background var(--transition-fast);
+}
+
+.taxpayer-notice-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.taxpayer-notice-details summary:hover {
+  background: var(--color-bg-light);
+}
+
+.taxpayer-notice-copy {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  padding: var(--spacing-xl);
+}
+
+.taxpayer-notice-copy p {
+  margin-bottom: var(--spacing-md);
+}
+
+.taxpayer-notice-signature {
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.taxpayer-notice-signature span {
+  margin-bottom: var(--spacing-sm);
+  text-transform: none;
+}
+
+.taxpayer-notice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.novidades-modal.taxpayer-notice-modal {
+  max-height: calc(100vh - 2 * var(--spacing-lg));
+  max-width: 900px;
+  overflow-y: auto;
+}
+
+.taxpayer-notice-modal-header {
+  justify-content: space-between;
+}
+
+.novidades-badge.taxpayer-notice-modal-badge {
+  background: var(--color-danger);
+}
+
+.taxpayer-notice-modal-date {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.novidades-modal.taxpayer-notice-modal > h3 {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-2xl);
+  line-height: 1.3;
+  margin-bottom: var(--spacing-md);
+  padding-right: 44px;
+}
+
+.taxpayer-notice-modal-lead {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+.taxpayer-notice-modal-deadlines {
+  display: grid;
+  gap: var(--spacing-sm);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: var(--spacing-md);
+}
+
+.taxpayer-notice-modal-deadlines > div {
+  background: var(--color-bg-secondary);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+}
+
+.taxpayer-notice-modal-deadlines > div:last-child {
+  border-left-color: var(--color-info);
+}
+
+.taxpayer-notice-modal-deadlines span,
+.taxpayer-notice-modal-deadlines strong {
+  display: block;
+}
+
+.taxpayer-notice-modal-deadlines span {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+}
+
+.taxpayer-notice-modal-deadlines strong {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+}
+
+.taxpayer-notice-modal-alert {
+  border-left: 4px solid var(--color-warning);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.taxpayer-notice-modal-fulltext {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-lg);
+  overflow: hidden;
+}
+
+.taxpayer-notice-modal-fulltext > h4 {
+  background: var(--color-primary);
+  color: var(--color-text-white);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin: 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.taxpayer-notice-copy.taxpayer-notice-modal-copy,
+.taxpayer-notice-copy.index-featured-notice-copy {
+  border-top: 0;
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-lg);
+}
+
+.taxpayer-notice-modal-actions {
+  background: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border);
+  bottom: calc(-1 * var(--spacing-xl));
+  margin: 0 calc(-1 * var(--spacing-xl)) calc(-1 * var(--spacing-xl));
+  padding: var(--spacing-md) var(--spacing-xl);
+  position: sticky;
+  z-index: 2;
+}
+
+.novidades-modal.index-news-modal {
+  max-height: calc(100vh - 2 * var(--spacing-lg));
+  max-width: 900px;
+  overflow-y: auto;
+}
+
+.index-featured-notice {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-left: 5px solid var(--color-danger);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-lg);
+}
+
+.index-featured-notice-meta {
+  align-items: center;
+  color: var(--color-text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  gap: var(--spacing-sm);
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.index-featured-notice h4 {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-lg);
+}
+
+.index-featured-notice-fulltext {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.index-featured-notice-fulltext > h5 {
+  background: var(--color-primary);
+  color: var(--color-text-white);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin: 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.index-featured-notice-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.index-news-list-title {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.index-news-actions {
+  background: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border);
+  bottom: calc(-1 * var(--spacing-xl));
+  margin: 0 calc(-1 * var(--spacing-xl)) calc(-1 * var(--spacing-xl));
+  padding: var(--spacing-md) var(--spacing-xl);
+  position: sticky;
+  z-index: 2;
+}
+
 /* Reforma Tributária */
 .hero-symbol {
   align-items: center;
@@ -1875,6 +2259,14 @@ body.novidades-open {
     gap: var(--spacing-xs);
   }
 
+  .taxpayer-notice-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .taxpayer-notice-deadlines {
+    grid-template-columns: 1fr;
+  }
+
   .dte-info-card {
     padding: var(--spacing-lg);
   }
@@ -2048,6 +2440,86 @@ body.novidades-open {
   .notification-intro {
     max-width: 100%;
     overflow-wrap: anywhere;
+  }
+
+  .taxpayer-notice-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .taxpayer-notice-title {
+    font-size: var(--font-size-xl);
+    overflow-wrap: anywhere;
+  }
+
+  .taxpayer-notice-lead {
+    font-size: var(--font-size-base);
+  }
+
+  .taxpayer-notice-deadline,
+  .taxpayer-notice-guidance,
+  .taxpayer-notice-copy {
+    padding: var(--spacing-md);
+  }
+
+  .taxpayer-notice-actions {
+    flex-direction: column;
+  }
+
+  .taxpayer-notice-actions .btn {
+    width: 100%;
+  }
+
+  .taxpayer-notice-modal {
+    padding: var(--spacing-lg);
+  }
+
+  .taxpayer-notice-modal-actions,
+  .index-news-actions {
+    bottom: calc(-1 * var(--spacing-lg));
+    margin: 0 calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg));
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .taxpayer-notice-modal > h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  .taxpayer-notice-modal-deadlines {
+    grid-template-columns: 1fr;
+  }
+
+  .taxpayer-notice-modal .novidades-actions {
+    flex-direction: column;
+  }
+
+  .taxpayer-notice-modal .novidades-actions .btn {
+    width: 100%;
+  }
+
+  .index-news-modal {
+    padding: var(--spacing-lg);
+  }
+
+  .index-featured-notice {
+    padding: var(--spacing-md);
+  }
+
+  .index-featured-notice h4 {
+    font-size: var(--font-size-xl);
+  }
+
+  .index-featured-notice-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .index-featured-notice-links {
+    flex-direction: column;
+  }
+
+  .index-featured-notice-links .btn {
+    width: 100%;
   }
 
   .reforma-tributaria-section .row {
