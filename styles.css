@@ -863,6 +863,62 @@ body {
   text-transform: none;
 }
 
+.taxpayer-notice-update {
+  background: #fff3cd;
+  border: 2px solid #b54708;
+  border-left-width: 8px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(122, 39, 26, 0.14);
+  color: #3d1f00;
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-xl);
+}
+
+.taxpayer-notice-update-heading {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.taxpayer-notice-update-heading > i {
+  color: #9a3412;
+  flex: 0 0 auto;
+  font-size: var(--font-size-2xl);
+}
+
+.taxpayer-notice-copy .taxpayer-notice-update h3 {
+  color: #7a271a;
+  font-size: var(--font-size-xl);
+  margin: 0;
+}
+
+.taxpayer-notice-update p:last-of-type {
+  margin-bottom: 0;
+}
+
+.taxpayer-notice-update p {
+  color: #3d1f00;
+}
+
+.taxpayer-notice-update-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.taxpayer-notice-update-links .btn {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.taxpayer-notice-update-links .btn:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+}
+
 .taxpayer-notice-actions {
   display: flex;
   flex-wrap: wrap;
@@ -2460,6 +2516,23 @@ body.novidades-open {
   .taxpayer-notice-guidance,
   .taxpayer-notice-copy {
     padding: var(--spacing-md);
+  }
+
+  .taxpayer-notice-update {
+    padding: var(--spacing-lg);
+  }
+
+  .taxpayer-notice-update-heading {
+    align-items: flex-start;
+  }
+
+  .taxpayer-notice-update-links {
+    flex-direction: column;
+  }
+
+  .taxpayer-notice-update-links .btn {
+    white-space: normal;
+    width: 100%;
   }
 
   .taxpayer-notice-actions {
