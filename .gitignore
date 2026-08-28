@@ -1,0 +1,3 @@
+# Arquivos locais usados para publicar no FiscalOnline.
+# A pasta pode conter dados de conexão, mas nunca deve guardar senhas.
+/deploy/
