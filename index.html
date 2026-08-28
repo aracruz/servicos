@@ -318,22 +318,22 @@
                     <span class="notification-badge notification-badge--important">
                         <i class="fas fa-bullhorn me-1"></i>Comunicado oficial
                     </span>
-                    <span><i class="far fa-calendar-alt me-1"></i>27 de julho de 2026</span>
+                    <span><i class="far fa-calendar-alt me-1"></i>Atualizado em 28 de agosto de 2026</span>
                 </div>
-                <h4>NFS-e: obrigatoriedade dos campos de IBS e CBS a partir de 3 de agosto de 2026</h4>
+                <h4>NFS-e: cronograma atualizado para as informações de IBS e CBS</h4>
                 <div class="taxpayer-notice-modal-deadlines">
                     <div>
-                        <span>Atualização do cronograma</span>
-                        <strong>1º de outubro de 2026</strong>
+                        <span>Cronograma escalonado</span>
+                        <strong>De 1º/10/2026 a 1º/01/2027</strong>
                     </div>
                     <div>
-                        <span>Publicação oficial</span>
-                        <strong>31 de julho de 2026</strong>
+                        <span>Validação</span>
+                        <strong>Sem rejeição até 31/12/2026</strong>
                     </div>
                 </div>
                 <div class="alert alert-warning taxpayer-notice-modal-alert" role="alert">
                     <i class="fas fa-triangle-exclamation me-2"></i>
-                    As datas do comunicado original foram atualizadas pelo Ato Conjunto RFB/CGIBS nº 4.
+                    A orientação de obrigatoriedade geral a partir de 03/08/2026 foi superada.
                 </div>
                 <section class="index-featured-notice-fulltext" aria-labelledby="indexNoticeFulltextTitle">
                     <h5 id="indexNoticeFulltextTitle">
@@ -345,9 +345,9 @@
                     <a href="reforma-tributaria.html#comunicado-contribuintes" class="btn btn-primary">
                         <i class="fas fa-newspaper me-1"></i>Ver na Reforma Tributária
                     </a>
-                    <a href="storage/Comunicado_aos_Contribuintes_NFSe_IBS_CBS_2026.pdf"
+                    <a href="storage/ATO CONJUNTO RFBCGIBS Nº 4, DE 30 DE JULHO DE 2026.pdf"
                         class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-file-pdf me-1"></i>Abrir PDF oficial
+                        <i class="fas fa-file-pdf me-1"></i>Abrir Ato Conjunto
                     </a>
                 </div>
             </article>
@@ -530,7 +530,7 @@
                     hasNovidades = true;
                     result.novidades.forEach((item) => {
                         const isFeaturedNotice = result.id === 'reforma-tributaria'
-                            && item.startsWith('NFS-e: campos de IBS e CBS obrigatórios');
+                            && item.startsWith('NFS-e: cronograma atualizado para IBS e CBS');
                         if (hasFeaturedNotice && isFeaturedNotice) {
                             return;
                         }
