@@ -1,3 +1,7 @@
 # Arquivos locais usados para publicar no FiscalOnline.
 # A pasta pode conter dados de conexão, mas nunca deve guardar senhas.
 /deploy/
+
+# Arquivos de validação de domínio do certificado SSL, gerados no servidor.
+# Existem apenas em produção e não devem ser versionados nem removidos.
+/.well-known/
